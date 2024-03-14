@@ -1,0 +1,98 @@
+import { StyleSheet } from "react-native";
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#272727",
+  },
+  titleView: {
+    backgroundColor: "#0D0D0D",
+    width: "100%",
+    height: "25%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  input: {
+    flex: 1,
+    height: 56,
+    backgroundColor: "#262626",
+    borderRadius: 5,
+    color: "#FFF",
+    padding: 16,
+    fontSize: 16,
+    marginRight: 12,
+    borderWidth: 1,
+    borderColor: "#000",
+  },
+  button: {
+    width: 55,
+    height: 55,
+    borderRadius: 5,
+    backgroundColor: "#1F6F9F",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  inputView: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 24,
+    marginTop: -28,
+    zIndex: 1,
+  },
+  tasksView: {
+    flex: 1,
+    backgroundColor: "#1A1A1A",
+    marginTop: -28,
+    paddingTop: 28,
+    paddingHorizontal: 24,
+    gap: 24,
+  },
+  tasksRegistered: {
+    flexDirection: "row",
+    marginTop: 32,
+    justifyContent: "space-between",
+  },
+  tasksCreatedText: {
+    fontWeight: "bold",
+    fontSize: 14,
+    color: "#4EA8DE",
+  },
+  tasksConcludedText: {
+    fontWeight: "bold",
+    fontSize: 14,
+    color: "#8284FA",
+  },
+  numberOfTasks: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "#D9D9D9",
+    backgroundColor: "#333333",
+    paddingHorizontal: 10,
+    paddingVertical: 2,
+    borderRadius: 12,
+    overflow: "hidden",
+  },
+  tasksAndNumberView: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  emptyTasksView: {
+    flex: 1,
+    borderTopWidth: 1,
+    borderTopColor: "#333333",
+    alignItems: "center",
+    paddingVertical: 48,
+    paddingHorizontal: 20,
+    gap: 16,
+  },
+  emptyTasksText: {
+    color: "#808080",
+    textAlign: "center",
+    lineHeight: 20,
+  },
+  emptyTasksTextBold: {
+    fontWeight: "bold",
+  },
+});
