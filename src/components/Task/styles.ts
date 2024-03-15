@@ -17,7 +17,14 @@ export const styles = StyleSheet.create({
     color: "#F2F2F2",
     fontSize: 14,
     maxWidth: "85%",
-     start: 8,
+    start: 4,
+  },
+  textChecked: {
+    color: "#808080",
+    fontSize: 14,
+    maxWidth: "85%",
+    start: 4,
+    textDecorationLine: "line-through",
   },
   innerView: {
     flexDirection: "row",

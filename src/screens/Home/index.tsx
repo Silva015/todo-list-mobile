@@ -1,4 +1,10 @@
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  FlatList,
+} from "react-native";
 import { Clipboard } from "../../../assets/images/clipboard";
 import { Logo } from "../../../assets/images/logo";
 import { Plus } from "../../../assets/images/plus";
@@ -7,6 +13,11 @@ import { Task } from "../../components/Task";
 
 export function Home() {
   const numberOfTasksCreated = 1; // Replace with the actual number of tasks created
+  // Importando o JSON
+  const mockup = require("../../../mockup.json");
+
+  // Usando o JSON
+  console.log(mockup);
 
   return (
     <>
@@ -38,7 +49,15 @@ export function Home() {
         </View>
 
         {numberOfTasksCreated > 0 ? (
-          <Task id="1" text="Eita pourran" checked={false} />
+          <View>
+            <FlatList
+              data={mockup}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => (
+                <Task id={item.id} text={item.text} checked={item.checked} />
+              )}
+            />
+          </View>
         ) : (
           <View style={styles.emptyTasksView}>
             <Clipboard />
