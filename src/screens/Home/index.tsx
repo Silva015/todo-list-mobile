@@ -14,12 +14,25 @@ import { Mockup } from "../../../mockup";
 import { useState } from "react";
 
 export function Home() {
+  const [idCount, setIdCount] = useState(5); // Replace with the actual number of tasks created
   const numberOfTasksCreated = 1; // Replace with the actual number of tasks created
   const [mockup, setMockup] =
     useState<{ id: string; text: string; checked: boolean }[]>(Mockup);
   const [newTask, setNewTask] = useState("");
 
-  console.log(newTask)
+  function handleAddTask() {
+    if (newTask) {
+      const newTaskObject = {
+        id: String(idCount),
+        text: newTask,
+        checked: false,
+      };
+
+      setMockup([...mockup, newTaskObject]);
+      setNewTask("");
+      setIdCount(idCount + 1);
+    }
+  }
 
   return (
     <>
@@ -35,7 +48,7 @@ export function Home() {
           value={newTask}
         />
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleAddTask}>
           <Plus />
         </TouchableOpacity>
       </View>

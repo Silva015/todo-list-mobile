@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { styles } from "./styles";
 import { Check } from "../../../assets/images/check";
 import { Trash } from "../../../assets/images/trash";
@@ -34,6 +34,20 @@ export function Task({ id, text, checked, mockup, setMockup }: TaskProps) {
     setMockup(updatedMockup);
   }
 
+  function handleDeleteTask() {
+    const updatedMockup = mockup.filter((item) => item.id !== id);
+    Alert.alert("Remover tarefa", `Deseja remover a tarefa ${text}?`, [
+      {
+        text: "Sim",
+        onPress: () => setMockup(updatedMockup),
+      },
+      {
+        text: "Não",
+        style: "cancel",
+      },
+    ]);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.innerView}>
@@ -53,7 +67,9 @@ export function Task({ id, text, checked, mockup, setMockup }: TaskProps) {
           </>
         )}
       </View>
-      <Trash />
+      <TouchableOpacity onPress={handleDeleteTask}>
+        <Trash />
+      </TouchableOpacity>
     </View>
   );
 }
