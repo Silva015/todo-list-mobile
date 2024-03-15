@@ -10,14 +10,16 @@ import { Logo } from "../../../assets/images/logo";
 import { Plus } from "../../../assets/images/plus";
 import { styles } from "./styles";
 import { Task } from "../../components/Task";
+import { Mockup } from "../../../mockup";
+import { useState } from "react";
 
 export function Home() {
   const numberOfTasksCreated = 1; // Replace with the actual number of tasks created
-  // Importando o JSON
-  const mockup = require("../../../mockup.json");
+  const [mockup, setMockup] =
+    useState<{ id: string; text: string; checked: boolean }[]>(Mockup);
+  const [newTask, setNewTask] = useState("");
 
-  // Usando o JSON
-  console.log(mockup);
+  console.log(newTask)
 
   return (
     <>
@@ -29,6 +31,8 @@ export function Home() {
           style={styles.input}
           placeholder="Adicione uma nova tarefa"
           placeholderTextColor="#6B6B6B"
+          onChangeText={(text) => setNewTask(text)}
+          value={newTask}
         />
 
         <TouchableOpacity style={styles.button}>
@@ -40,11 +44,13 @@ export function Home() {
         <View style={styles.tasksRegistered}>
           <View style={styles.tasksAndNumberView}>
             <Text style={styles.tasksCreatedText}>Criadas</Text>
-            <Text style={styles.numberOfTasks}>{numberOfTasksCreated}</Text>
+            <Text style={styles.numberOfTasks}>{mockup.length}</Text>
           </View>
           <View style={styles.tasksAndNumberView}>
             <Text style={styles.tasksConcludedText}>Concluídas</Text>
-            <Text style={styles.numberOfTasks}>0</Text>
+            <Text style={styles.numberOfTasks}>
+              {mockup.filter((item: any) => item.checked).length}
+            </Text>
           </View>
         </View>
 
@@ -54,7 +60,13 @@ export function Home() {
               data={mockup}
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => (
-                <Task id={item.id} text={item.text} checked={item.checked} />
+                <Task
+                  id={item.id}
+                  text={item.text}
+                  checked={item.checked}
+                  mockup={mockup}
+                  setMockup={setMockup}
+                />
               )}
             />
           </View>
